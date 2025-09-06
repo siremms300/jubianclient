@@ -1,0 +1,256 @@
+
+
+@import "tailwindcss/preflight"; 
+@tailwind utilities; 
+
+
+
+*{
+  margin: 0px; padding: 0px; box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  background: #f5f0f0;
+  color: rgba(0, 0, 0, 0.7); 
+}
+
+
+::-webkit-scrollbar {
+  width: 5px !important; 
+  height: 5px !important; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ef7921;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+
+.container {
+  width: 95%;
+  margin: auto
+} 
+
+header .top-strip{} 
+/* border-top: 1px solid rgba(0, 0, 0, 0.1); border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+ 
+.btn-org-old {
+  background: #ef7921 !important; color: #fff !important; font-weight: 400; font-size: 12px; padding: 3px 8px !important;
+}
+
+ 
+.btn-org-old:hover {
+  background: #171717 !important;
+  color: #fff !important; /* keep text visible */
+}
+
+
+.btn-org {
+  background: transparent !important;
+  color: #ef7921 !important;
+  border: 1px solid #ef7921 !important;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 3px 8px !important;
+  transition: all 0.3s ease-in-out; /* smooth hover effect */
+}
+
+.btn-org:hover {
+  background: #ef7921 !important;
+  color: #fff !important;
+  border-color: #ef7921 !important;
+}
+
+
+.bg-org:hover {
+  background: #171717 !important;
+}
+
+.bg-blue {
+  background: #27a9e2; 
+}
+
+.link:hover{
+  color: #ef7921
+}
+
+
+nav ul button {
+  text-transform: capitalize !important; 
+  color: rgba(0, 0, 0, 0.7) !important
+}
+
+nav ul button:hover {
+  text-transform: capitalize !important; 
+  color: rgba(0, 0, 0, 0.7) !important
+}
+
+.sliderHome {
+    overflow: inherit !important;
+}
+
+.swiper-button-prev, .swiper-button-next{
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: #fff;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px; 
+  min-width: 45px;
+}
+
+.swiper-button-prev:after, .swiper-button-next:after {
+  font-size: 22px !important; color: rgb(58, 58, 58);
+
+}
+
+.smlBtn .swiper-button-prev, .smlBtn .swiper-button-next {
+  width: 30px !important; height: 30px !important; min-width: 30px !important; min-height: 30px !important; top: 55% !important;
+} 
+
+.smlBtn .swiper-button-prev:after, .smlBtn .swiper-button-next:after {
+  font-size: 22px !important; color: rgb(58, 58, 58);
+}
+
+
+.homeCatSlider {
+  overflow: inherit !important;
+}
+
+.homeCatSlider .swiper-button-prev {
+  width: 30px; height: 30px; min-width: 30px; 
+}
+
+.homeCatSlider .swiper-button-next {
+  width: 30px; height: 30px; min-width: 30px; 
+}
+
+.homeCatSlider .swiper-button-prev:after {
+  font-size: 16px !important;
+}
+
+
+.homeCatSlider .swiper-button-next:after {
+  font-size: 16px !important;
+}
+
+.homeCatSlider .swiper-button-prev {
+  left: -10px !important;
+}
+
+.homeCatSlider .swiper-button-next {
+  right: -10px !important;
+}
+
+.homeCatSlider .swiper-button-prev:hover {
+  background: #ef7921 !important;
+}
+
+.homeCatSlider .swiper-button-next:hover {
+  background: #ef7921 !important;
+}
+
+.homeCatSlider .swiper-button-prev:hover::after {
+  color: #fff !important;
+}
+
+.homeCatSlider .swiper-button-next:hover::after {
+  color: #fff !important;
+}
+
+/* .homeCatSlider .item {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  
+} */
+
+.homeCatSlider .item {
+  width: 120px;        /* fixed width */
+  height: 100px;       /* fixed height */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.homeCatSlider .item:hover img {
+  transform: scale(1.2);
+}
+
+
+.homeCatSlider .item img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;   /* keeps aspect ratio */
+  transition: all 0.3s ease;
+}
+
+.homeCatSlider .item h3 {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+
+.MuiTabs-indicator {
+  background-color: #ff5252 !important;
+}
+
+.MuiTab-textColorPrimary.Mui-selected {
+  color: #ff5252 !important;
+}
+
+.Mui-selected.MuiPaginationItem-page {
+  background: #ef7921 !important;
+  color: #fff !important; 
+
+}
+
+
+.productsSlider .swiper-wrapper{
+  padding: 15px; 
+  margin-left: -15px; 
+  margin-right: -15px; 
+
+}
+
+.productDescription:hover {
+  color: #ef7921;
+}
+
+
+.MuiCheckbox-root{
+  padding: 6px !important;
+}
+
+
+.ReactCollapse--collapse{
+  transition: height 500ms;
+}
+
+.range-slider .range-slider__thumb { 
+  width: 14px !important;
+  height: 14px !important; 
+  background: #ef7921 !important;
+   
+}
+
+.range-slider .range-slider__range {
+  background: #ef7921 !important; 
+}
+.range-slider {
+  height: 3px !important;
+}
+
+
+
+.cartPanel .MuiPaper-root {
+  width: 400px;
+}
