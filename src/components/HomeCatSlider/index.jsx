@@ -362,7 +362,7 @@ const HomeCatSlider = () => {
             </Link>
           </SwiperSlide>
 
-          {/* ...repeat same pattern for electronics, grocery, handbag, jewelry, etc. */}
+          
 
         </Swiper>
       </div>

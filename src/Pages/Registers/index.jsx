@@ -1,88 +1,3 @@
-// import React, { useState } from 'react';
-// import Button from '@mui/material/Button';
-// import TextField from '@mui/material/TextField';
-// import IconButton from '@mui/material/IconButton';
-// import InputAdornment from '@mui/material/InputAdornment';
-// import { Visibility, VisibilityOff } from '@mui/icons-material';
-// import { ToastContainer, toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { Google } from '@mui/icons-material'; // Google logo from Material-UI
-// import { postData } from '../../utils/api';
-
-// const Register = () => {
-//   const [fullName, setFullName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [showPassword, setShowPassword] = useState(false);
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     postData("/api/users/logout").then((res)=>{
-
-//     })
-//     toast.success('Registration successful!');
-//   };
-
-//   return (
-//     <div style={styles.container}>
-//       <div style={styles.form}>
-//         <h2 style={styles.heading}>Register</h2>
-//         <form onSubmit={handleSubmit}>
-//           <TextField
-//             label="Full Name"
-//             variant="outlined"
-//             fullWidth
-//             value={fullName}
-//             onChange={(e) => setFullName(e.target.value)}
-//             style={styles.input}
-//           />
-//           <TextField
-//             label="Email"
-//             variant="outlined"
-//             fullWidth
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//             style={styles.input}
-//           />
-//           <TextField
-//             label="Password"
-//             variant="outlined"
-//             type={showPassword ? 'text' : 'password'}
-//             fullWidth
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//             style={styles.input}
-//             InputProps={{
-//               endAdornment: (
-//                 <InputAdornment position="end">
-//                   <IconButton onClick={() => setShowPassword(!showPassword)}>
-//                     {showPassword ? <VisibilityOff /> : <Visibility />}
-//                   </IconButton>
-//                 </InputAdornment>
-//               ),
-//             }}
-//           />
-//           <Button type="submit" variant="contained" fullWidth style={styles.submitButton}>
-//             Register
-//           </Button>
-//         </form>
-//         <Button
-//           variant="outlined"
-//           fullWidth
-//           style={styles.googleButton}
-//           startIcon={<Google />} // Adding Google logo to button
-//         >
-//           Sign up with Google
-//         </Button>
-//         <p style={styles.switchLink}>
-//           Already have an account? <a href="/login" style={styles.link}>Login</a>
-//         </p>
-//       </div>
-//       <ToastContainer />
-//     </div>
-//   );
-// };
-
 import React, { useState } from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -91,56 +6,17 @@ import InputAdornment from '@mui/material/InputAdornment';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Google } from '@mui/icons-material';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/authContext';
-import { registerUser } from '../../utils/api';
+import { Google } from '@mui/icons-material'; // Google logo from Material-UI
 
 const Register = () => {
-  const [fullName, setFullName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  
-  const navigate = useNavigate();
-  const { login } = useAuth();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setIsLoading(true);
     
-    try {
-      const userData = {
-        name: fullName,
-        email,
-        password
-      };
-      
-      const response = await registerUser(userData);
-      
-      if (response.success) {
-        toast.success('Registration successful! Please check your email to verify your account.');
-        
-        // Store token and user data if auto-login is enabled
-        if (response.token) {
-          login(response.data, response.token);
-          navigate('/');
-        } else {
-          // Redirect to login if manual verification is needed
-          setTimeout(() => {
-            navigate('/login');
-          }, 3000); 
-        }
-      } else {
-        toast.error(response.message || 'Registration failed');
-      }
-    } catch (error) {
-      console.error('Registration error:', error);
-      toast.error(error.message || 'Registration failed. Please try again.');
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   return (
@@ -152,34 +28,29 @@ const Register = () => {
             label="Full Name"
             variant="outlined"
             fullWidth
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
             style={styles.input}
-            required
           />
           <TextField
             label="Email"
             variant="outlined"
             fullWidth
-            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={styles.input}
-            required
           />
           <TextField
             label="Password"
             variant="outlined"
             type={showPassword ? 'text' : 'password'}
-            fullWidth
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            style={styles.input}
-            required
-            inputProps={{ minLength: 6 }}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
+            fullWidth 
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            style={styles.input} 
+            InputProps={{ 
+              endAdornment: ( 
+                <InputAdornment position="end"> 
                   <IconButton onClick={() => setShowPassword(!showPassword)}>
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
@@ -187,21 +58,15 @@ const Register = () => {
               ),
             }}
           />
-          <Button 
-            type="submit" 
-            variant="contained" 
-            fullWidth 
-            style={styles.submitButton}
-            disabled={isLoading}
-          >
-            {isLoading ? 'Registering...' : 'Register'}
+          <Button type="submit" variant="contained" fullWidth style={styles.submitButton}>
+            Register
           </Button>
         </form>
         <Button
           variant="outlined"
           fullWidth
           style={styles.googleButton}
-          startIcon={<Google />}
+          startIcon={<Google />} // Adding Google logo to button
         >
           Sign up with Google
         </Button>
@@ -213,8 +78,6 @@ const Register = () => {
     </div>
   );
 };
-
-
 
 const styles = {
   container: {
